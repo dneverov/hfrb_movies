@@ -6,6 +6,12 @@ class MovieStore
     @store = YAML::Store.new(file_name)
   end
 
+  def count
+    @store.transaction do
+      @store.roots.length
+    end
+  end
+
   def save(movie)
     @store.transaction do
       unless movie.id
