@@ -10,6 +10,7 @@
     <% @movies.each do |movie| %>
       <li>
         <a href="/movies/<%= movie.id %>"><%= movie.title %></a>
+        <small><a href="/movies/<%= movie.id %>/edit">edit</a></small>
       </li>
     <% end %>
   </ul>

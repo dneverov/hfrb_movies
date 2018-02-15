@@ -28,6 +28,22 @@ post('/movies/create') do
   redirect '/movies/new'
 end
 
+get('/movies/:id/edit') do
+  id = params['id'].to_i
+  @movie = store.find(id)
+  erb :edit
+end
+
+patch('/movies/:id/update') do
+  id = params['id'].to_i
+  @movie = store.find(id)
+  @movie.title = params['title']
+  @movie.director = params['director']
+  @movie.year = params['year']
+  store.save(@movie)
+  redirect "/movies/#{id}"
+end
+
 # !!! Must be the last route in the file
 get('/movies/:id') do
   id = params['id'].to_i

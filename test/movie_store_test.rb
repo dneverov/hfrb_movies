@@ -38,7 +38,7 @@ class MovieStoreTest < Minitest::Test
     assert_instance_of(Movie, @movie_store.all.first)
   end
 
-  def test_save_movie_succeed
+  def test_save_movie_creates_new_movie
     movie_store_count = @movie_store.count.to_i
 
     movie = Movie.new
@@ -49,6 +49,29 @@ class MovieStoreTest < Minitest::Test
     @movie_store.save(movie)
 
     assert_equal(movie_store_count + 1, @movie_store.count)
+  end
+
+  def test_save_movie_updates_existent_movie
+    movie_id = 2
+    movie_title = "Ghostbusters 2"
+    movie_year = 1989
+
+    movie_store_count = @movie_store.count.to_i
+
+    movie = @movie_store.find(movie_id)
+    movie.title = movie_title
+    movie.year = movie_year
+
+    @movie_store.save(movie)
+
+    assert_equal(movie_store_count, @movie_store.count)
+
+    # Updated movie
+    updated_movie = @movie_store.find(movie_id)
+
+    assert_equal(movie_title, updated_movie.title)
+    assert_equal("Ivan Reitman", updated_movie.director)
+    assert_equal(movie_year, updated_movie.year)
   end
 
   def test_find_returns_a_movie
