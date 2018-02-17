@@ -34,4 +34,10 @@ class MovieStore
     end
   end
 
+  def destroy(id)
+    @store.transaction do
+      @store.delete(id)
+    end
+  end
+
 end

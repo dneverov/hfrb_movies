@@ -27,5 +27,11 @@
       </table>
     </form>
     <a href="/movies">Back to Index</a>
+
+    <form action="/movies/<%= @movie.id %>/destroy" method="post" onsubmit="return confirm('Are you sure?');">
+      <input id="hidden" type="hidden" name="_method" value="delete" />
+      <input type="submit" value="delete" style="color: red; font-variant: small-caps; margin-left: 250px" />
+    </form>
+
   </body>
 </html>

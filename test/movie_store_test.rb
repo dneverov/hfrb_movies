@@ -82,4 +82,28 @@ class MovieStoreTest < Minitest::Test
     assert_nil @movie_store.find(211)
   end
 
+  def test_destroy_deletes_a_movie
+    movie_id = 2
+
+    movie_store_count = @movie_store.count.to_i
+
+    # Check that the movie exists
+    assert_instance_of( Movie, @movie_store.find(movie_id) )
+
+    @movie_store.destroy(movie_id)
+
+    assert_equal(movie_store_count - 1, @movie_store.count)
+    # Test that the movie does not exist
+    assert_nil @movie_store.find(movie_id)
+  end
+
+  def test_destroy_fails
+    movie_id = 211
+    movie_store_count = @movie_store.count.to_i
+
+    assert_nil @movie_store.destroy(movie_id)
+    # Test Movies count number is the same
+    assert_equal(movie_store_count, @movie_store.count)
+  end
+
 end

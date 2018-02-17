@@ -44,6 +44,12 @@ patch('/movies/:id/update') do
   redirect "/movies/#{id}"
 end
 
+delete('/movies/:id/destroy') do
+  id = params['id'].to_i
+  store.destroy(id)
+  redirect to '/movies'
+end
+
 # !!! Must be the last route in the file
 get('/movies/:id') do
   id = params['id'].to_i
