@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>My Movies — Edit Movie</title>
+    <link rel="stylesheet" href="/css/main.css" />
   </head>
   <body>
     <h1>Edit Movie: <%= @movie.title %></h1>
@@ -30,7 +31,7 @@
 
     <form action="/movies/<%= @movie.id %>/destroy" method="post" onsubmit="return confirm('Are you sure?');">
       <input id="hidden" type="hidden" name="_method" value="delete" />
-      <input type="submit" value="delete" style="color: red; font-variant: small-caps; margin-left: 250px" />
+      <input type="submit" value="delete" class="button-delete" />
     </form>
 
   </body>
