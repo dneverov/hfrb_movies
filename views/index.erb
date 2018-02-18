@@ -1,20 +1,10 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <title>My Movies</title>
-  <link rel="stylesheet" href="/css/main.css" />
-</head>
-<body>
-  <h1>My Movies</h1>
-  <ul>
-    <% @movies.each do |movie| %>
-      <li>
-        <a href="/movies/<%= movie.id %>"><%= movie.title %></a>
-        <small><a href="/movies/<%= movie.id %>/edit">edit</a></small>
-      </li>
-    <% end %>
-  </ul>
-  <a href="/movies/new">Add a New Movie</a>
-</body>
-</html>
+<h1>My Movies</h1>
+<ul>
+  <% @movies.each do |movie| %>
+    <li>
+      <a href="/movies/<%= movie.id %>"><%= movie.title %></a>
+      <small><a href="/movies/<%= movie.id %>/edit">edit</a></small>
+    </li>
+  <% end %>
+</ul>
+<a href="/movies/new">Add a New Movie</a>

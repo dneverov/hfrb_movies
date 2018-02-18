@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title><%= @title || 'My Movies' %></title>
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+  <p class="breadcrumbs">
+    <% unless @title.nil? %>
+      <a href="/movies">Home</a>
+    <% end %>
+  </p>
+  <%= yield %>
+</body>
+</html>

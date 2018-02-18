@@ -1,38 +1,27 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>My Movies — Edit Movie</title>
-    <link rel="stylesheet" href="/css/main.css" />
-  </head>
-  <body>
-    <h1>Edit Movie: <%= @movie.title %></h1>
-    <form method="post" action="/movies/<%= @movie.id %>/update">
-      <input type="hidden" name="_method" value="patch" />
-      <table>
-        <tr>
-          <td><label for="title">Title:</label></td>
-          <td><input type="text" name="title" value="<%= @movie.title %>" /></td>
-        </tr>
-        <tr>
-          <td><label for="director">Director:</label></td>
-          <td><input type="text" name="director" value="<%= @movie.director %>" /></td>
-        </tr>
-        <tr>
-          <td><label for="year">Year:</label></td>
-          <td><input type="text" name="year" value="<%= @movie.year %>" /></td>
-        </tr>
-        <tr>
-          <td><input type="submit" value="Harrr!" /></td>
-        </tr>
-      </table>
-    </form>
-    <a href="/movies">Back to Index</a>
+<% @title = "My Movies — Edit Movie" %>
+<h1>Edit Movie: <%= @movie.title %></h1>
+<form method="post" action="/movies/<%= @movie.id %>/update">
+  <input type="hidden" name="_method" value="patch" />
+  <table>
+    <tr>
+      <td><label for="title">Title:</label></td>
+      <td><input type="text" name="title" value="<%= @movie.title %>" /></td>
+    </tr>
+    <tr>
+      <td><label for="director">Director:</label></td>
+      <td><input type="text" name="director" value="<%= @movie.director %>" /></td>
+    </tr>
+    <tr>
+      <td><label for="year">Year:</label></td>
+      <td><input type="text" name="year" value="<%= @movie.year %>" /></td>
+    </tr>
+    <tr>
+      <td><input type="submit" value="Harrr!" /></td>
+    </tr>
+  </table>
+</form>
 
-    <form action="/movies/<%= @movie.id %>/destroy" method="post" onsubmit="return confirm('Are you sure?');">
-      <input id="hidden" type="hidden" name="_method" value="delete" />
-      <input type="submit" value="delete" class="button-delete" />
-    </form>
-
-  </body>
-</html>
+<form action="/movies/<%= @movie.id %>/destroy" method="post" onsubmit="return confirm('Are you sure?');">
+  <input id="hidden" type="hidden" name="_method" value="delete" />
+  <input type="submit" value="delete" class="button-delete" />
+</form>
